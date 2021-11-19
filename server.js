@@ -1,8 +1,5 @@
 const express = require('express')
 const app = express()
-// const cors = require('cors')
-
-// app.use(cors)
 
 const words = {
     "a": "[1,2],[0,3],[0,1,2,3],[0,3],[0,3]",
@@ -88,6 +85,8 @@ app.get('/', async(req, res) => {
     var container = arr;
     res.render("index", {pixel: container, length: len})
 })
+
+app.post('/')
 
 
 const port = process.env.PORT || 3000;
