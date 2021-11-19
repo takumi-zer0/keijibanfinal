@@ -86,7 +86,7 @@ app.post('/api', (req, res) => {
 
 app.get('/', async(req, res) => {
     var container = arr;
-    res.render("index2", {pixel: container, length: len})
+    res.render("index", {pixel: container, length: len})
 })
 
 
