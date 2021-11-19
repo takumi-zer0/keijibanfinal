@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="disc">
+        <h1>ENTER TEXT</h1>
+        <form action="/api" method="POST">
+            <input type="text" name="inputText" id="inputText" placeholder="HELLO">
+            <input type="submit" value="Generate!">
+        </form>
+    </div>
+
+        <% for(var i = 0; i < 5; i++){ %>
+                <div class="row">
+        <% for(var j = 0; j < 40; j++){ %>
+            <div class="label" id="<%= i %>-<%=j%>"></div>
+       <% }%>
+    </div>
+       <% }%>
+
+  <script>
+      var test = <%- JSON.stringify(pixel) %>
+      var length = <%- JSON.stringify(length) %>
+      console.log(length)
+
+      function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+    async function demo() {
+        var count = 50;
+        var set1 = test;
+        console.log(set1)
+        while (count > -6 * length) {
+            for (var i = 0; i < 5; i++) {
+                for (var j = 0; j < 40; j++) {
+                        var set = set1[i].map(n => n + count);
+
+                        if (set.includes(j)) {
+                            let target = document.getElementById(i + "-" + j);
+                            target.classList.add("on")
+                        } else {
+                            let target = document.getElementById(i + "-" + j);
+                            target.classList.remove("on")
+                        }
+                }
+            }
+            count--;
+            await sleep(70);
+            if(count == -6 * length + 1){
+                count = 50;
+            }
+        }
+    }
+
+        demo();
+
+  </script>
+
+
+
+            <style>
+                .on {
+                    background-color: black !important;
+                }
+
+                .disc {
+                    text-align: center;
+                    margin: 1rem;
+                }
+
+                .label {
+                    background-color: rgb(168, 210, 234);
+                    height: 30px;
+                    width: 30px;
+                }
+
+                .row {
+                    display: flex;
+                    justify-content: center;
+                }
+            </style>
+</body>
+
+</html>
